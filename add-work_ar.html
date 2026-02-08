@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Work | Eng.Gad</title>
+    <title>إضافة عمل | Eng.Gad</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <script>
@@ -22,98 +22,70 @@
     </script>
 </head>
 
-<body
-    class="bg-lightBg text-slate-900 dark:bg-darkBg dark:text-white min-h-screen overflow-x-hidden transition-colors duration-500">
+<body class="bg-lightBg text-slate-900 dark:bg-darkBg dark:text-white min-h-screen overflow-x-hidden transition-colors duration-500">
 
     <div class="blob top-0 right-0 animate-pulse"></div>
     <div class="blob bottom-0 left-0" style="animation-delay: 2s;"></div>
 
-    <nav
-        class="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/30 dark:bg-black/20 border-b border-gray-200 dark:border-white/10">
+    <nav class="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/30 dark:bg-black/20 border-b border-gray-200 dark:border-white/10">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html"
-                class="text-2xl font-black tracking-tighter text-cyan-600 dark:text-cyan-400 hover:opacity-80 transition">Gad
-                Development</a>
+            <a href="index_ar.html" class="text-2xl font-black tracking-tighter text-cyan-600 dark:text-cyan-400 hover:opacity-80 transition">Gad Development</a>
             <div class="hidden sm:flex items-center gap-4">
-                <a href="messages.html"
-                    class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">Messages</a>
-                <a href="index.html"
-                    class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">Website</a>
+                <a href="messages.html" class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">الرسائل</a>
+                <a href="index_ar.html" class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">الموقع</a>
 
                 <button class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10 hover:ring-2 ring-cyan-400 transition-all">
-                    <a href="add-work_ar.html"
-                        class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">العربية</a>
+                    <a href="add-work.html"
+                        class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">English</a>
                 </button>
-                <button id="theme-toggle"
-                    class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10 hover:ring-2 ring-cyan-400 transition-all"
-                    aria-label="تبديل الوضع الليلي">
-                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-yellow-500" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path
-                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
-                        </path>
+                <button id="theme-toggle" class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10 hover:ring-2 ring-cyan-400 transition-all" aria-label="Toggle dark mode">
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
                     </svg>
-                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-700 dark:text-gray-300"
-                        fill="currentColor" viewBox="0 0 20 20">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                     </svg>
                 </button>
             </div>
             <div class="flex sm:hidden items-center gap-2">
                 <button id="theme-toggle-mob" class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10">
-                    <svg id="theme-light-mob" class="hidden w-5 h-5 text-yellow-500" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path
-                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
-                        </path>
-                    </svg>
-                    <svg id="theme-dark-mob" class="hidden w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                    </svg>
+                    <svg id="theme-light-mob" class="hidden w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+                    <svg id="theme-dark-mob" class="hidden w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                 </button>
-                <button type="button" id="nav-mob-toggle" class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10"
-                    aria-label="القائمة">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+                <button type="button" id="nav-mob-toggle" class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10" aria-label="القائمة">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
             </div>
         </div>
-        <div id="nav-mob-menu"
-            class="hidden sm:hidden absolute top-full left-0 right-0 bg-white dark:bg-darkBg border-b border-gray-200 dark:border-white/10 shadow-xl">
-            <div
-                class="container mx-auto px-6 py-4 flex flex-col gap-3 text-sm font-bold uppercase tracking-widest opacity-70">
-                <a href="messages.html" class="nav-mob-link block py-2 hover:text-cyan-500 transition">Messages</a>
-                <a href="index.html" class="nav-mob-link block py-2 hover:text-cyan-500 transition">Website</a>
-                <a href="add-work_ar.html" class="nav-mob-link block py-2 hover:text-cyan-500 transition">العربية</a>
+        <div id="nav-mob-menu" class="hidden sm:hidden absolute top-full left-0 right-0 bg-white dark:bg-darkBg border-b border-gray-200 dark:border-white/10 shadow-xl">
+            <div class="container mx-auto px-6 py-4 flex flex-col gap-3 text-sm font-bold uppercase tracking-widest opacity-70">
+                <a href="messages.html" class="nav-mob-link block py-2 hover:text-cyan-500 transition">الرسائل</a>
+                <a href="index_ar.html" class="nav-mob-link block py-2 hover:text-cyan-500 transition">الموقع</a>
+                <a href="add-work.html" class="nav-mob-link block py-2 hover:text-cyan-500 transition">English</a>
             </div>
         </div>
     </nav>
 
     <div class="relative z-10 container mx-auto px-6 pt-28 pb-16 max-w-4xl">
         <header class="mb-10">
-            <p class="text-cyan-600 dark:text-cyan-400 font-bold tracking-widest uppercase text-sm mb-2">Portfolio 2026
-            </p>
-            <h1 class="text-4xl md:text-5xl font-black tracking-tighter">Add <span class="text-cyan-500">Work</span>
-            </h1>
-            <p class="opacity-60 mt-2">Add your projects to show in the Works section on the website.</p>
+            <p class="text-cyan-600 dark:text-cyan-400 font-bold tracking-widest uppercase text-sm mb-2">Portfolio 2026</p>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tighter">إضافة <span class="text-cyan-500">عمل</span></h1>
+            <p class="opacity-60 mt-2">أضف مشاريعك لتظهر في قسم أعمالي في الموقع.</p>
         </header>
 
         <!-- تسجيل الدخول -->
         <div id="login-box" class="max-w-md">
             <div class="bg-white dark:bg-white/5 rounded-3xl p-8 shadow-xl border border-gray-200 dark:border-white/10">
-                <p class="opacity-70 mb-6">Enter your email and password (same as the messages account) to add.</p>
+                <p class="opacity-70 mb-6">ادخل بريدك وكلمة المرور (نفس حساب الرسائل) للإضافة.</p>
                 <form id="login-form" class="space-y-4">
-                    <input type="email" id="login-email" placeholder="Email" required
+                    <input type="email" id="login-email" placeholder="البريد الإلكتروني" required
                         class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition">
-                    <input type="password" id="login-password" placeholder="Password" required
+                    <input type="password" id="login-password" placeholder="كلمة المرور" required
                         class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition">
                     <p id="login-error" class="text-red-500 text-sm hidden"></p>
                     <button type="submit" id="login-btn"
                         class="w-full py-4 bg-cyan-600 text-white rounded-2xl font-bold hover:bg-cyan-500 shadow-lg shadow-cyan-600/25 hover:shadow-cyan-500/30 transition-all hover:scale-[1.02]">
-                        Login
+                        دخول
                     </button>
                 </form>
             </div>
@@ -121,48 +93,41 @@
 
         <!-- نموذج الإضافة + قائمة الأعمال -->
         <div id="works-box" class="hidden">
-            <div
-                class="bg-white dark:bg-white/5 rounded-3xl p-8 shadow-xl border border-gray-200 dark:border-white/10 mb-10">
-                <h2 id="form-title" class="text-xl font-black mb-6">New
-                    <form id="add-work-form" class="space-y-4">
-                        <input type="hidden" id="work-edit-id" value="">
-                        <input type="text" id="work-title" placeholder="Project Title" required
-                            class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition">
-                        <textarea id="work-description" rows="3" placeholder="Short description of the project" required
-                            class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition"></textarea>
-                        <div>
-                            <label class="block text-sm font-bold opacity-80 mb-2">Project Image</label>
-                            <div id="work-image-current" class="hidden mb-2"><img id="work-image-preview" src="" alt=""
-                                    class="w-32 h-24 object-cover rounded-xl border border-gray-200 dark:border-white/10">
-                                <p class="text-xs opacity-60 mt-1">الصورة الحالية — اختر صورة جديدة لتغييرها</p>
-                            </div>
-                            <input type="file" id="work-image-file" accept="image/*"
-                                class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-cyan-600 file:text-white file:font-bold">
-                        </div>
-                        <input type="url" id="work-link" placeholder="Project Link (optional)"
-                            class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition">
-                        <p id="form-error" class="text-red-500 text-sm hidden"></p>
-                        <div class="flex gap-3">
-                            <button type="button" id="cancel-edit-btn"
-                                class="hidden px-6 py-4 rounded-2xl font-bold border-2 border-gray-300 dark:border-white/20 hover:bg-gray-100 dark:hover:bg-white/10 transition-all">
-                                Cancel
-                            </button>
-                            <button type="submit" id="submit-work-btn"
-                                class="flex-1 py-4 bg-cyan-600 text-white rounded-2xl font-bold hover:bg-cyan-500 shadow-lg shadow-cyan-600/25 hover:shadow-cyan-500/30 transition-all hover:scale-[1.02]">
-                                Add Work
-                            </button>
-                        </div>
-                    </form>
+            <div class="bg-white dark:bg-white/5 rounded-3xl p-8 shadow-xl border border-gray-200 dark:border-white/10 mb-10">
+                <h2 id="form-title" class="text-xl font-black mb-6">عمل جديد</h2>
+                <form id="add-work-form" class="space-y-4">
+                    <input type="hidden" id="work-edit-id" value="">
+                    <input type="text" id="work-title" placeholder="عنوان المشروع" required
+                        class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition">
+                    <textarea id="work-description" rows="3" placeholder="وصف قصير للمشروع" required
+                        class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition"></textarea>
+                    <div>
+                        <label class="block text-sm font-bold opacity-80 mb-2">صورة المشروع</label>
+                        <div id="work-image-current" class="hidden mb-2"><img id="work-image-preview" src="" alt="" class="w-32 h-24 object-cover rounded-xl border border-gray-200 dark:border-white/10"><p class="text-xs opacity-60 mt-1">الصورة الحالية — اختر صورة جديدة لتغييرها</p></div>
+                        <input type="file" id="work-image-file" accept="image/*"
+                            class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-cyan-600 file:text-white file:font-bold">
+                    </div>
+                    <input type="url" id="work-link" placeholder="رابط المشروع (اختياري)"
+                        class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition">
+                    <p id="form-error" class="text-red-500 text-sm hidden"></p>
+                    <div class="flex gap-3">
+                        <button type="button" id="cancel-edit-btn" class="hidden px-6 py-4 rounded-2xl font-bold border-2 border-gray-300 dark:border-white/20 hover:bg-gray-100 dark:hover:bg-white/10 transition-all">
+                            إلغاء
+                        </button>
+                        <button type="submit" id="submit-work-btn"
+                            class="flex-1 py-4 bg-cyan-600 text-white rounded-2xl font-bold hover:bg-cyan-500 shadow-lg shadow-cyan-600/25 hover:shadow-cyan-500/30 transition-all hover:scale-[1.02]">
+                            إضافة العمل
+                        </button>
+                    </div>
+                </form>
             </div>
 
             <div class="flex justify-between items-center mb-6">
-                <h2 class="text-xl font-black opacity-90">Your Current Works</h2>
-                <button id="logout-btn"
-                    class="px-4 py-2 rounded-xl text-red-500 hover:bg-red-500/10 transition-all text-sm font-bold">Logout</button>
+                <h2 class="text-xl font-black opacity-90">أعمالك الحالية</h2>
+                <button id="logout-btn" class="px-4 py-2 rounded-xl text-red-500 hover:bg-red-500/10 transition-all text-sm font-bold">تسجيل الخروج</button>
             </div>
             <div id="works-list" class="space-y-4"></div>
-            <p id="no-works" class="text-center opacity-60 py-12 hidden">No works. Add the first work from the form
-                above.</p>
+            <p id="no-works" class="text-center opacity-60 py-12 hidden">لا توجد أعمال. أضف أول عمل من النموذج أعلاه.</p>
         </div>
     </div>
 
@@ -263,18 +228,18 @@
             if (!client) return;
             const { data: user } = await client.auth.getUser();
             if (!user?.user) {
-                showLogin('You must login.');
+                showLogin('يجب تسجيل الدخول.');
                 return;
             }
             const { data, error } = await client.from('works').select('id, title, description, image_url, project_link, created_at').order('created_at', { ascending: false });
             worksList.innerHTML = '';
             if (error) {
-                noWorks.textContent = 'Failed to load works. Please enable RLS and connect the table to your account.';
+                noWorks.textContent = 'تعذر تحميل الأعمال. تأكد من إنشاء جدول works في Supabase.';
                 noWorks.classList.remove('hidden');
                 return;
             }
             if (!data || data.length === 0) {
-                noWorks.textContent = 'No works. Add the first work from the form above.';
+                noWorks.textContent = 'لا توجد أعمال. أضف أول عمل من النموذج أعلاه.';
                 noWorks.classList.remove('hidden');
                 return;
             }
@@ -287,14 +252,14 @@
                 card.innerHTML =
                     '<div class="flex-1 min-w-0">' + img + '<h3 class="font-bold text-cyan-600 dark:text-cyan-400 mt-2">' + escapeHtml(row.title) + '</h3><p class="text-sm opacity-70 line-clamp-2">' + escapeHtml(row.description) + '</p></div>' +
                     '<div class="flex gap-2">' +
-                    '<button type="button" data-id="' + row.id + '" class="edit-work px-4 py-2 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-500/20 text-sm font-bold">Edit</button>' +
-                    '<button type="button" data-id="' + row.id + '" class="delete-work px-4 py-2 rounded-xl bg-red-500/10 text-red-500 hover:bg-red-500/20 text-sm font-bold">Delete</button>' +
+                    '<button type="button" data-id="' + row.id + '" class="edit-work px-4 py-2 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-500/20 text-sm font-bold">تعديل</button>' +
+                    '<button type="button" data-id="' + row.id + '" class="delete-work px-4 py-2 rounded-xl bg-red-500/10 text-red-500 hover:bg-red-500/20 text-sm font-bold">حذف</button>' +
                     '</div>';
                 worksList.appendChild(card);
             });
             worksList.querySelectorAll('.delete-work').forEach(function (btn) {
                 btn.addEventListener('click', function () {
-                    if (confirm('Delete this work?')) deleteWork(btn.dataset.id);
+                    if (confirm('حذف هذا العمل؟')) deleteWork(btn.dataset.id);
                 });
             });
             worksList.querySelectorAll('.edit-work').forEach(function (btn) {
@@ -320,8 +285,8 @@
             } else {
                 currentBox.classList.add('hidden');
             }
-            document.getElementById('form-title').textContent = 'Edit Work';
-            document.getElementById('submit-work-btn').textContent = 'Save Changes';
+            document.getElementById('form-title').textContent = 'تعديل العمل';
+            document.getElementById('submit-work-btn').textContent = 'حفظ التعديلات';
             document.getElementById('cancel-edit-btn').classList.remove('hidden');
             document.getElementById('add-work-form').scrollIntoView({ behavior: 'smooth' });
         }
@@ -334,8 +299,8 @@
             document.getElementById('work-link').value = '';
             document.getElementById('work-image-file').value = '';
             document.getElementById('work-image-current').classList.add('hidden');
-            document.getElementById('form-title').textContent = 'New Work';
-            document.getElementById('submit-work-btn').textContent = 'Add Work';
+            document.getElementById('form-title').textContent = 'عمل جديد';
+            document.getElementById('submit-work-btn').textContent = 'إضافة العمل';
             document.getElementById('cancel-edit-btn').classList.add('hidden');
         }
 
@@ -365,7 +330,7 @@
         }
 
         if (!client || !hasSupabase) {
-            loginBox.querySelector('form').innerHTML = '<p class="text-amber-600 dark:text-amber-400">Please setup Supabase in the <code class="bg-black/10 dark:bg-white/10 px-1 rounded">config.js</code> file, then create the table and login.</p>';
+            loginBox.querySelector('form').innerHTML = '<p class="text-amber-600 dark:text-amber-400">يرجى إعداد Supabase في <code class="bg-black/10 dark:bg-white/10 px-1 rounded">config.js</code> وتشغيل سكربت جدول works.</p>';
         } else {
             loginForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
@@ -373,11 +338,11 @@
                 const email = document.getElementById('login-email').value.trim();
                 const password = document.getElementById('login-password').value;
                 const btn = document.getElementById('login-btn');
-                if (btn) { btn.disabled = true; btn.textContent = 'Logging in...'; }
+                if (btn) { btn.disabled = true; btn.textContent = 'جاري الدخول...'; }
                 const { error } = await client.auth.signInWithPassword({ email, password });
-                if (btn) { btn.disabled = false; btn.textContent = 'Login'; }
+                if (btn) { btn.disabled = false; btn.textContent = 'دخول'; }
                 if (error) {
-                    loginError.textContent = error.message || 'Failed to login.';
+                    loginError.textContent = error.message || 'فشل تسجيل الدخول.';
                     loginError.classList.remove('hidden');
                     return;
                 }
@@ -399,7 +364,7 @@
                 const fileInput = document.getElementById('work-image-file');
                 const file = fileInput && fileInput.files && fileInput.files[0];
                 if (!title || !description) {
-                    formError.textContent = 'The title and description are required.';
+                    formError.textContent = 'العنوان والوصف مطلوبان.';
                     formError.classList.remove('hidden');
                     return;
                 }
@@ -408,7 +373,7 @@
                     if (file) {
                         image_url = await uploadWorkImage(file);
                         if (!image_url) {
-                            formError.textContent = 'Failed to upload image. Please check the works-images bucket and storage policies.';
+                            formError.textContent = 'فشل رفع الصورة. تأكد من إعداد bucket works-images وسياسات التخزين.';
                             formError.classList.remove('hidden');
                             return;
                         }
@@ -417,20 +382,20 @@
                     }
                 } else {
                     if (!file) {
-                        formError.textContent = 'You must select an image for the project.';
+                        formError.textContent = 'يجب اختيار صورة للمشروع.';
                         formError.classList.remove('hidden');
                         return;
                     }
                     image_url = await uploadWorkImage(file);
                     if (!image_url) {
-                        formError.textContent = 'Failed to upload image. Please check the works-images bucket and storage policies.';
+                        formError.textContent = 'فشل رفع الصورة. تأكد من إعداد bucket works-images وسياسات التخزين.';
                         formError.classList.remove('hidden');
                         return;
                     }
                 }
                 const btn = document.getElementById('submit-work-btn');
                 const btnText = btn ? btn.textContent : '';
-                if (btn) { btn.disabled = true; btn.textContent = editId ? 'Saving...' : 'Adding...'; }
+                if (btn) { btn.disabled = true; btn.textContent = editId ? 'جاري الحفظ...' : 'جاري الإضافة...'; }
                 let error;
                 if (editId) {
                     const res = await client.from('works').update({ title, description, image_url, project_link }).eq('id', editId);
@@ -439,9 +404,9 @@
                     const res = await client.from('works').insert([{ title, description, image_url, project_link }]);
                     error = res.error;
                 }
-                if (btn) { btn.disabled = false; btn.textContent = editId ? 'Save Changes' : 'Add Work'; }
+                if (btn) { btn.disabled = false; btn.textContent = editId ? 'حفظ التعديلات' : 'إضافة العمل'; }
                 if (error) {
-                    formError.textContent = error.message || (editId ? 'Failed to save changes.' : 'Failed to add work.');
+                    formError.textContent = error.message || (editId ? 'فشل التعديل.' : 'فشل الإضافة.');
                     formError.classList.remove('hidden');
                     return;
                 }

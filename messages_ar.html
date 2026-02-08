@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messages | Gad Development</title>
+    <title>الرسائل | بشمهندس جاد</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <script>
@@ -33,21 +33,22 @@
         class="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/30 dark:bg-black/20 border-b border-gray-200 dark:border-white/10">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index_ar.html"
-                class="text-2xl font-black tracking-tighter text-cyan-600 dark:text-cyan-400 hover:opacity-80 transition">Gad
-                Development</a>
+                class="text-2xl font-black tracking-tighter text-cyan-600 dark:text-cyan-400 hover:opacity-80 transition">
+                Gad Development</a>
             <div class="hidden sm:flex items-center gap-4">
                 <a href="add-work.html"
-                    class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">Add
-                    Work</a>
+                    class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">اضافة
+                    اعمال
+                </a>
                 <a href="index_ar.html"
-                    class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">Website</a>
+                    class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">الموقع</a>
                 <button class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10 hover:ring-2 ring-cyan-400 transition-all">
-                    <a href="messages_ar.html"
-                        class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">العربية</a>
+                    <a href="messages.html"
+                        class="text-sm font-bold uppercase tracking-widest opacity-70 hover:text-cyan-500 transition">English</a>
                 </button>
                 <button id="theme-toggle"
                     class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10 hover:ring-2 ring-cyan-400 transition-all"
-                    aria-label="تبديل الوضع الليلي">
+                    aria-label="الثيم">
                     <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-yellow-500" fill="currentColor"
                         viewBox="0 0 20 20">
                         <path
@@ -74,7 +75,7 @@
                     </svg>
                 </button>
                 <button type="button" id="nav-mob-toggle" class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10"
-                    aria-label="القائمة">
+                    aria-label="فتح القائمة">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
@@ -86,8 +87,8 @@
             class="hidden sm:hidden absolute top-full left-0 right-0 bg-white dark:bg-darkBg border-b border-gray-200 dark:border-white/10 shadow-xl">
             <div
                 class="container mx-auto px-6 py-4 flex flex-col gap-3 text-sm font-bold uppercase tracking-widest opacity-70">
-                <a href="add-work.html" class="nav-mob-link block py-2 hover:text-cyan-500 transition">Add Work</a>
-                <a href="index.html" class="nav-mob-link block py-2 hover:text-cyan-500 transition">Website</a>
+                <a href="add-work.html" class="nav-mob-link block py-2 hover:text-cyan-500 transition">اضافة اعمال</a>
+                <a href="index.html" class="nav-mob-link block py-2 hover:text-cyan-500 transition">الموقع</a>
             </div>
         </div>
     </nav>
@@ -95,17 +96,18 @@
     <div class="relative z-10 container mx-auto px-6 pt-28 pb-16 max-w-4xl">
         <!-- عنوان الصفحة -->
         <header class="mb-10">
-            <p class="text-cyan-600 dark:text-cyan-400 font-bold tracking-widest uppercase text-sm mb-2">Portfolio 2026
+            <p class="text-cyan-600 dark:text-cyan-400 font-bold tracking-widest uppercase text-sm mb-2">بشمهندس جاد
             </p>
-            <h1 class="text-4xl md:text-5xl font-black tracking-tighter">Messages <span class="text-cyan-500">Box</span>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tighter">الرسائل <span
+                    class="text-cyan-500">الواردة</span>
             </h1>
-            <p class="opacity-60 mt-2">Messages — for you only.</p>
+            <p class="opacity-60 mt-2">الرسائل — لك فقط.</p>
         </header>
 
         <!-- تسجيل الدخول -->
         <div id="login-box" class="max-w-md">
             <div class="bg-white dark:bg-white/5 rounded-3xl p-8 shadow-xl border border-gray-200 dark:border-white/10">
-                <p class="opacity-70 mb-6">Enter your email and password (Supabase account) to view the messages.</p>
+                <p class="opacity-70 mb-6">ادخل بريدك الإلكتروني وكلمة المرور (حساب Supabase) لعرض الرسائل.</p>
                 <form id="login-form" class="space-y-4">
                     <input type="email" id="login-email" placeholder="Email" required
                         class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition">
@@ -123,20 +125,20 @@
         <!-- قائمة الرسائل (بعد الدخول) -->
         <div id="messages-box" class="hidden">
             <div class="flex flex-wrap justify-between items-center gap-4 mb-8">
-                <h2 class="text-xl font-black opacity-90">Incoming Messages</h2>
+                <h2 class="text-xl font-black opacity-90">الرسائل الواردة</h2>
                 <div class="flex items-center gap-3">
                     <button id="refresh-btn"
                         class="px-4 py-2 rounded-xl bg-gray-200 dark:bg-white/10 hover:ring-2 ring-cyan-400 transition-all text-sm font-bold">
-                        Refresh
+                        تحديث
                     </button>
                     <button id="logout-btn"
                         class="px-4 py-2 rounded-xl text-red-500 hover:bg-red-500/10 transition-all text-sm font-bold">
-                        Logout
+                        تسجيل الخروج
                     </button>
                 </div>
             </div>
             <div id="messages-list" class="space-y-5"></div>
-            <p id="no-messages" class="text-center opacity-60 py-16 hidden">No messages yet.</p>
+            <p id="no-messages" class="text-center opacity-60 py-16 hidden">لا توجد رسائل بعد.</p>
         </div>
     </div>
 
@@ -244,7 +246,7 @@
             if (!client) return;
             const { data: user } = await client.auth.getUser();
             if (!user?.user) {
-                showLogin('You must login.');
+                showLogin('يجب تسجيل الدخول.');
                 return;
             }
             if (refreshBtn) refreshBtn.disabled = true;
@@ -252,12 +254,12 @@
             if (refreshBtn) refreshBtn.disabled = false;
             messagesList.innerHTML = '';
             if (error) {
-                noMessages.textContent = 'Failed to load messages. Please enable RLS and connect the table to your account.';
+                noMessages.textContent = 'فشل تحميل الرسائل. تأكد من تفعيل RLS وربط الجدول بحسابك.';
                 noMessages.classList.remove('hidden');
                 return;
             }
             if (!data || data.length === 0) {
-                noMessages.textContent = 'No messages yet.';
+                noMessages.textContent = 'لا توجد رسائل بعد.';
                 noMessages.classList.remove('hidden');
                 return;
             }
@@ -270,14 +272,14 @@
                     ? '<a href="tel:' + escapeHtml(row.phone) + '" class="text-sm text-cyan-600 dark:text-cyan-400 hover:underline block mb-2">' + escapeHtml(row.phone) + '</a>'
                     : '';
                 const visitorBadge = row.visitor_id
-                    ? '<span class="text-xs bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 px-2 py-0.5 rounded-full ml-2">Visitor ID</span>'
+                    ? '<span class="text-xs bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 px-2 py-0.5 rounded-full ml-2">معرف الزائر</span>'
                     : '';
                 card.innerHTML =
                     '<div class="flex flex-wrap justify-between items-start gap-3 mb-3">' +
                     '<span class="flex items-center gap-2"><span class="text-lg font-black text-cyan-600 dark:text-cyan-400">' + escapeHtml(row.name) + '</span>' + visitorBadge + '</span>' +
                     '<div class="flex items-center gap-2">' +
                     '<span class="text-xs opacity-60">' + formatDate(row.created_at) + '</span>' +
-                    '<button type="button" class="msg-delete-btn px-3 py-1 rounded-lg text-red-500 hover:bg-red-500/10 text-xs font-bold transition-all" data-id="' + escapeHtml(row.id) + '" title="Delete Message">Delete</button>' +
+                    '<button type="button" class="msg-delete-btn px-3 py-1 rounded-lg text-red-500 hover:bg-red-500/10 text-xs font-bold transition-all" data-id="' + escapeHtml(row.id) + '" title="حذف الرسالة">حذف</button>' +
                     '</div>' +
                     '</div>' +
                     '<a href="mailto:' + escapeHtml(row.email) + '" class="text-sm text-cyan-600 dark:text-cyan-400 hover:underline block mb-2">' + escapeHtml(row.email) + '</a>' +
@@ -292,19 +294,19 @@
 
         async function deleteMessage(id, cardEl) {
             if (!client || !id) return;
-            if (!confirm('Delete this message from the database?')) return;
+            if (!confirm('حذف هذه الرسالة من قاعدة البيانات؟')) return;
             const { error } = await client.from('contact_messages').delete().eq('id', id);
             if (error) {
-                alert('Failed to delete: ' + (error.message || 'Please enable DELETE permission in Supabase.'));
+                alert('فشل الحذف: ' + (error.message || 'تأكد من تفعيل صلاحية الحذف (DELETE) في Supabase.'));
                 return;
             }
             if (cardEl) {
                 cardEl.remove();
                 if (messagesList.children.length === 0) {
-                    noMessages.textContent = 'No messages yet.';
+                    noMessages.textContent = 'لا توجد رسائل بعد.';
                     noMessages.classList.remove('hidden');
                 }
-                alert('Message deleted from the database.');
+                alert('تم حذف الرسالة من قاعدة البيانات.');
             }
         }
 
@@ -316,7 +318,7 @@
         }
 
         if (!client || !hasSupabase) {
-            loginBox.querySelector('form').innerHTML = '<p class="text-amber-600 dark:text-amber-400">Please setup Supabase in the <code class="bg-black/10 dark:bg-white/10 px-1 rounded">config.js</code> file, then create the table and login.</p>';
+            loginBox.querySelector('form').innerHTML = '<p class="text-amber-600 dark:text-amber-400">تأكد من تثبيت Supabase في ملف <code class="bg-black/10 dark:bg-white/10 px-1 rounded">config.js</code> ، ثم قم بإنشاء الجدول وتسجيل الدخول.</p>';
         } else {
             loginForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
@@ -325,15 +327,15 @@
                 const password = document.getElementById('login-password').value;
                 if (loginBtn) {
                     loginBtn.disabled = true;
-                    loginBtn.textContent = 'Logging in...';
+                    loginBtn.textContent = 'جاري تسجيل الدخول...';
                 }
                 const { data, error } = await client.auth.signInWithPassword({ email, password });
                 if (loginBtn) {
                     loginBtn.disabled = false;
-                    loginBtn.textContent = 'Login';
+                    loginBtn.textContent = 'تسجيل الدخول';
                 }
                 if (error) {
-                    loginError.textContent = error.message || 'Failed to login.';
+                    loginError.textContent = error.message || 'فشل تسجيل الدخول.';
                     loginError.classList.remove('hidden');
                     return;
                 }
