@@ -88,21 +88,31 @@
         <!-- نموذج الإضافة + قائمة الأعمال -->
         <div id="works-box" class="hidden">
             <div class="bg-white dark:bg-white/5 rounded-3xl p-8 shadow-xl border border-gray-200 dark:border-white/10 mb-10">
-                <h2 class="text-xl font-black mb-6">عمل جديد</h2>
+                <h2 id="form-title" class="text-xl font-black mb-6">عمل جديد</h2>
                 <form id="add-work-form" class="space-y-4">
+                    <input type="hidden" id="work-edit-id" value="">
                     <input type="text" id="work-title" placeholder="عنوان المشروع" required
                         class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition">
                     <textarea id="work-description" rows="3" placeholder="وصف قصير للمشروع" required
                         class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition"></textarea>
-                    <input type="url" id="work-image" placeholder="رابط صورة المشروع (URL)" required
-                        class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition">
+                    <div>
+                        <label class="block text-sm font-bold opacity-80 mb-2">صورة المشروع</label>
+                        <div id="work-image-current" class="hidden mb-2"><img id="work-image-preview" src="" alt="" class="w-32 h-24 object-cover rounded-xl border border-gray-200 dark:border-white/10"><p class="text-xs opacity-60 mt-1">الصورة الحالية — اختر صورة جديدة لتغييرها</p></div>
+                        <input type="file" id="work-image-file" accept="image/*"
+                            class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-cyan-600 file:text-white file:font-bold">
+                    </div>
                     <input type="url" id="work-link" placeholder="رابط المشروع (اختياري)"
                         class="w-full p-4 rounded-2xl bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 focus:ring-2 ring-cyan-500 outline-none transition">
                     <p id="form-error" class="text-red-500 text-sm hidden"></p>
-                    <button type="submit" id="submit-work-btn"
-                        class="w-full py-4 bg-cyan-600 text-white rounded-2xl font-bold hover:bg-cyan-500 shadow-lg shadow-cyan-600/25 hover:shadow-cyan-500/30 transition-all hover:scale-[1.02]">
-                        إضافة العمل
-                    </button>
+                    <div class="flex gap-3">
+                        <button type="button" id="cancel-edit-btn" class="hidden px-6 py-4 rounded-2xl font-bold border-2 border-gray-300 dark:border-white/20 hover:bg-gray-100 dark:hover:bg-white/10 transition-all">
+                            إلغاء
+                        </button>
+                        <button type="submit" id="submit-work-btn"
+                            class="flex-1 py-4 bg-cyan-600 text-white rounded-2xl font-bold hover:bg-cyan-500 shadow-lg shadow-cyan-600/25 hover:shadow-cyan-500/30 transition-all hover:scale-[1.02]">
+                            إضافة العمل
+                        </button>
+                    </div>
                 </form>
             </div>
 
@@ -228,13 +238,17 @@
                 return;
             }
             noWorks.classList.add('hidden');
+            window._worksData = data;
             data.forEach(function (row) {
                 const card = document.createElement('div');
                 card.className = 'bg-white dark:bg-white/5 rounded-2xl p-6 border border-gray-200 dark:border-white/10 flex flex-wrap gap-4 items-center';
                 const img = row.image_url ? '<img src="' + row.image_url.replace(/"/g, '&quot;') + '" alt="" class="w-24 h-16 object-cover rounded-xl">' : '';
                 card.innerHTML =
                     '<div class="flex-1 min-w-0">' + img + '<h3 class="font-bold text-cyan-600 dark:text-cyan-400 mt-2">' + escapeHtml(row.title) + '</h3><p class="text-sm opacity-70 line-clamp-2">' + escapeHtml(row.description) + '</p></div>' +
-                    '<button type="button" data-id="' + row.id + '" class="delete-work px-4 py-2 rounded-xl bg-red-500/10 text-red-500 hover:bg-red-500/20 text-sm font-bold">حذف</button>';
+                    '<div class="flex gap-2">' +
+                    '<button type="button" data-id="' + row.id + '" class="edit-work px-4 py-2 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-500/20 text-sm font-bold">تعديل</button>' +
+                    '<button type="button" data-id="' + row.id + '" class="delete-work px-4 py-2 rounded-xl bg-red-500/10 text-red-500 hover:bg-red-500/20 text-sm font-bold">حذف</button>' +
+                    '</div>';
                 worksList.appendChild(card);
             });
             worksList.querySelectorAll('.delete-work').forEach(function (btn) {
@@ -242,6 +256,46 @@
                     if (confirm('حذف هذا العمل؟')) deleteWork(btn.dataset.id);
                 });
             });
+            worksList.querySelectorAll('.edit-work').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var w = (window._worksData || []).find(function (x) { return x.id === btn.dataset.id; });
+                    if (w) setEditWork(w);
+                });
+            });
+        }
+
+        function setEditWork(row) {
+            document.getElementById('work-edit-id').value = row.id || '';
+            document.getElementById('work-title').value = row.title || '';
+            document.getElementById('work-description').value = row.description || '';
+            document.getElementById('work-link').value = row.project_link || '';
+            document.getElementById('work-image-file').value = '';
+            var currentBox = document.getElementById('work-image-current');
+            var previewImg = document.getElementById('work-image-preview');
+            window._editingImageUrl = row.image_url || null;
+            if (row.image_url) {
+                currentBox.classList.remove('hidden');
+                previewImg.src = row.image_url;
+            } else {
+                currentBox.classList.add('hidden');
+            }
+            document.getElementById('form-title').textContent = 'تعديل العمل';
+            document.getElementById('submit-work-btn').textContent = 'حفظ التعديلات';
+            document.getElementById('cancel-edit-btn').classList.remove('hidden');
+            document.getElementById('add-work-form').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetWorkForm() {
+            window._editingImageUrl = null;
+            document.getElementById('work-edit-id').value = '';
+            document.getElementById('work-title').value = '';
+            document.getElementById('work-description').value = '';
+            document.getElementById('work-link').value = '';
+            document.getElementById('work-image-file').value = '';
+            document.getElementById('work-image-current').classList.add('hidden');
+            document.getElementById('form-title').textContent = 'عمل جديد';
+            document.getElementById('submit-work-btn').textContent = 'إضافة العمل';
+            document.getElementById('cancel-edit-btn').classList.add('hidden');
         }
 
         function escapeHtml(text) {
@@ -255,6 +309,18 @@
             if (!client) return;
             const { error } = await client.from('works').delete().eq('id', id);
             if (!error) loadWorks();
+        }
+
+        async function uploadWorkImage(file) {
+            if (!client || !file) return null;
+            const { data: user } = await client.auth.getUser();
+            const uid = (user && user.user && user.user.id) ? user.user.id : 'anon';
+            const ext = (file.name && file.name.split('.').pop()) ? file.name.split('.').pop().toLowerCase() : 'jpg';
+            const path = uid + '/' + Date.now() + '_' + Math.random().toString(36).slice(2) + '.' + ext;
+            const { data, error } = await client.storage.from('works-images').upload(path, file, { upsert: false });
+            if (error) return null;
+            const { data: urlData } = client.storage.from('works-images').getPublicUrl(data.path);
+            return urlData ? urlData.publicUrl : null;
         }
 
         if (!client || !hasSupabase) {
@@ -285,26 +351,65 @@
             addWorkForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
                 formError.classList.add('hidden');
+                const editId = document.getElementById('work-edit-id').value.trim();
                 const title = document.getElementById('work-title').value.trim();
                 const description = document.getElementById('work-description').value.trim();
-                const image_url = document.getElementById('work-image').value.trim();
                 const project_link = document.getElementById('work-link').value.trim() || null;
-                if (!title || !description || !image_url) {
-                    formError.textContent = 'العنوان والوصف ورابط الصورة مطلوبة.';
+                const fileInput = document.getElementById('work-image-file');
+                const file = fileInput && fileInput.files && fileInput.files[0];
+                if (!title || !description) {
+                    formError.textContent = 'العنوان والوصف مطلوبان.';
                     formError.classList.remove('hidden');
                     return;
+                }
+                let image_url = null;
+                if (editId) {
+                    if (file) {
+                        image_url = await uploadWorkImage(file);
+                        if (!image_url) {
+                            formError.textContent = 'فشل رفع الصورة. تأكد من إعداد bucket works-images وسياسات التخزين.';
+                            formError.classList.remove('hidden');
+                            return;
+                        }
+                    } else {
+                        image_url = window._editingImageUrl || null;
+                    }
+                } else {
+                    if (!file) {
+                        formError.textContent = 'يجب اختيار صورة للمشروع.';
+                        formError.classList.remove('hidden');
+                        return;
+                    }
+                    image_url = await uploadWorkImage(file);
+                    if (!image_url) {
+                        formError.textContent = 'فشل رفع الصورة. تأكد من إعداد bucket works-images وسياسات التخزين.';
+                        formError.classList.remove('hidden');
+                        return;
+                    }
                 }
                 const btn = document.getElementById('submit-work-btn');
-                if (btn) { btn.disabled = true; btn.textContent = 'جاري الإضافة...'; }
-                const { error } = await client.from('works').insert([{ title, description, image_url, project_link }]);
-                if (btn) { btn.disabled = false; btn.textContent = 'إضافة العمل'; }
+                const btnText = btn ? btn.textContent : '';
+                if (btn) { btn.disabled = true; btn.textContent = editId ? 'جاري الحفظ...' : 'جاري الإضافة...'; }
+                let error;
+                if (editId) {
+                    const res = await client.from('works').update({ title, description, image_url, project_link }).eq('id', editId);
+                    error = res.error;
+                } else {
+                    const res = await client.from('works').insert([{ title, description, image_url, project_link }]);
+                    error = res.error;
+                }
+                if (btn) { btn.disabled = false; btn.textContent = editId ? 'حفظ التعديلات' : 'إضافة العمل'; }
                 if (error) {
-                    formError.textContent = error.message || 'فشل الإضافة.';
+                    formError.textContent = error.message || (editId ? 'فشل التعديل.' : 'فشل الإضافة.');
                     formError.classList.remove('hidden');
                     return;
                 }
-                addWorkForm.reset();
+                resetWorkForm();
                 loadWorks();
+            });
+
+            document.getElementById('cancel-edit-btn').addEventListener('click', function () {
+                resetWorkForm();
             });
 
             client.auth.onAuthStateChange(function (event, session) {

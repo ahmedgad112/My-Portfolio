@@ -126,3 +126,12 @@ CREATE POLICY "Allow authenticated delete works"
   FOR DELETE
   TO authenticated
   USING (true);
+
+-- ========== تخزين صور الأعمال (Supabase Storage) ==========
+-- أنشئ من لوحة Supabase: Storage → New bucket → الاسم: works-images → Public: نعم
+-- ثم شغّل السياسات التالية:
+INSERT INTO storage.buckets (id, name, public) VALUES ('works-images', 'works-images', true) ON CONFLICT (id) DO NOTHING;
+DROP POLICY IF EXISTS "Allow authenticated upload works-images" ON storage.objects;
+CREATE POLICY "Allow authenticated upload works-images" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'works-images');
+DROP POLICY IF EXISTS "Allow public read works-images" ON storage.objects;
+CREATE POLICY "Allow public read works-images" ON storage.objects FOR SELECT USING (bucket_id = 'works-images');
