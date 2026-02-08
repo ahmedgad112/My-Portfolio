@@ -57,16 +57,55 @@ document.addEventListener('mousemove', (e) => {
 });
 
 
-// إضافة منطق الـ Contact Form (مع دعم Supabase إن وُجد)
+// إضافة منطق الـ Contact Form (مع دعم Supabase وإن وُجد زائر معرّف)
 const contactForm = document.getElementById('contact-form');
+
+// ملء نموذج التواصل من بيانات الزائر إن حفظها مسبقاً (صفحة تعريف الزائر)
+if (contactForm) {
+    try {
+        var vName = localStorage.getItem('visitorName');
+        var vEmail = localStorage.getItem('visitorEmail');
+        var vPhone = localStorage.getItem('visitorPhone');
+        if (vName || vEmail || vPhone) {
+            var nameInput = contactForm.querySelector('[name="name"]') || contactForm.elements.name;
+            var emailInput = contactForm.querySelector('[name="email"]') || contactForm.elements.email;
+            var phoneInput = contactForm.querySelector('[name="phone"]') || contactForm.elements.phone;
+            if (nameInput && vName) nameInput.value = vName;
+            if (emailInput && vEmail) emailInput.value = vEmail;
+            if (phoneInput && vPhone) phoneInput.value = vPhone;
+        }
+    } catch (e) {}
+}
+
+// إظهار/إخفاء "تعريف الزائر" و "تسجيل الخروج" حسب بيانات الزائر
+(function () {
+    var navLogin = document.getElementById('nav-visitor-login');
+    var navLogout = document.getElementById('nav-visitor-logout');
+    var hasVisitor = !!(localStorage.getItem('visitorId') || localStorage.getItem('visitorName'));
+    if (navLogin) navLogin.style.display = hasVisitor ? 'none' : '';
+    if (navLogout) navLogout.style.display = hasVisitor ? '' : 'none';
+
+    var logoutBtn = document.getElementById('visitor-logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function () {
+            localStorage.removeItem('visitorId');
+            localStorage.removeItem('visitorName');
+            localStorage.removeItem('visitorEmail');
+            localStorage.removeItem('visitorPhone');
+            window.location.reload();
+        });
+    }
+})();
 
 function getFormData(form) {
     const nameEl = form.querySelector('[name="name"]') || form.elements.name;
     const emailEl = form.querySelector('[name="email"]') || form.elements.email;
+    const phoneEl = form.querySelector('[name="phone"]') || form.elements.phone;
     const messageEl = form.querySelector('[name="message"]') || form.elements.message;
     return {
         name: nameEl ? nameEl.value.trim() : '',
         email: emailEl ? emailEl.value.trim() : '',
+        phone: phoneEl ? phoneEl.value.trim() : '',
         message: messageEl ? messageEl.value.trim() : ''
     };
 }
@@ -87,9 +126,9 @@ if (contactForm) {
         btn.innerText = langEn ? 'Sending...' : 'جاري الإرسال...';
         btn.disabled = true;
 
-        const { name, email, message } = getFormData(contactForm);
+        const { name, email, phone, message } = getFormData(contactForm);
         if (!name || !email || !message) {
-            alert(langEn ? 'Please fill all fields.' : 'يرجى تعبئة جميع الحقول.');
+            alert(langEn ? 'Please fill Name, Email and Message.' : 'يرجى تعبئة الاسم، البريد والرسالة.');
             btn.innerText = originalText;
             btn.disabled = false;
             return;
@@ -103,7 +142,10 @@ if (contactForm) {
             try {
                 const { createClient } = window.supabase;
                 const client = createClient(supabaseUrl, supabaseKey);
-                const { error } = await client.from('contact_messages').insert([{ name, email, message }]);
+                const visitorId = localStorage.getItem('visitorId') || null;
+                const payload = { name, email, phone: phone || null, message };
+                if (visitorId) payload.visitor_id = visitorId;
+                const { error } = await client.from('contact_messages').insert([payload]);
                 showFormFeedback(btn, originalText, !error, langEn);
                 return;
             } catch (err) {
@@ -124,3 +166,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+// 5. تحميل أعمال البورتفوليو (My Works) من Supabase
+(function () {
+    const grid = document.getElementById('works-grid');
+    if (!grid) return;
+    const supabaseUrl = window.SUPABASE_URL;
+    const supabaseKey = window.SUPABASE_ANON_KEY;
+    const hasSupabase = supabaseUrl && supabaseKey && !supabaseUrl.includes('YOUR_') && !supabaseKey.includes('YOUR_');
+    if (!hasSupabase || !window.supabase) return;
+    const { createClient } = window.supabase;
+    const client = createClient(supabaseUrl, supabaseKey);
+    client.from('works').select('id, title, description, image_url, project_link').order('created_at', { ascending: false })
+        .then(function (_ref) {
+            var data = _ref.data, error = _ref.error;
+            if (error || !data || data.length === 0) return;
+            var langEn = document.documentElement.lang === 'en';
+            var viewLabel = langEn ? 'View Project' : 'عرض المشروع';
+            function esc(s) {
+                var d = document.createElement('div');
+                d.textContent = s || '';
+                return d.innerHTML;
+            }
+            grid.innerHTML = data.map(function (w, i) {
+                var overlayInner = w.project_link
+                    ? '<a href="' + esc(w.project_link) + '" target="_blank" rel="noopener" class="flex items-center justify-center w-full h-full"><span class="bg-white text-black px-6 py-2 rounded-full font-bold shadow-xl">' + viewLabel + '</span></a>'
+                    : '<span class="bg-white text-black px-6 py-2 rounded-full font-bold shadow-xl">' + viewLabel + '</span>';
+                return '<div class="project-card group cursor-pointer" data-aos="zoom-in" data-aos-delay="' + (i * 100) + '">' +
+                    '<div class="relative overflow-hidden rounded-3xl bg-gray-200 dark:bg-white/5 aspect-video mb-6">' +
+                    '<img src="' + esc(w.image_url) + '" alt="' + esc(w.title) + '" class="object-cover w-full h-full group-hover:scale-110 transition duration-700">' +
+                    '<div class="absolute inset-0 bg-cyan-600/20 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">' + overlayInner + '</div>' +
+                    '</div>' +
+                    '<h3 class="text-2xl font-bold group-hover:text-cyan-500 transition">' + esc(w.title) + '</h3>' +
+                    '<p class="opacity-60 mt-2">' + esc(w.description) + '</p></div>';
+            }).join('');
+            if (window.AOS && typeof window.AOS.refresh === 'function') window.AOS.refresh();
+        });
+})();

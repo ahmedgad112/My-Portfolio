@@ -66,7 +66,10 @@ window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6...';
 
 | الصفحة | الاستخدام |
 |--------|-----------|
-| **messages.html** | أنت فقط — لاستعراض الرسائل (لا تشارك الرابط). |
-| **index.html / index_ar.html** | للزوار — نموذج التواصل يرسل ويُحفظ تلقائياً. |
+| **messages.html** | أنت فقط — لاستعراض رسائل التواصل. |
+| **add-work.html** | أنت فقط — إضافة/حذف أعمال تظهر في قسم «أعمالي» في الموقع. |
+| **index.html / index_ar.html** | للزوار — الموقع + نموذج التواصل. |
+
+ملاحظة: ملف **supabase_setup.sql** ينشئ جدول الرسائل **وجدول الأعمال (works)**. شغّله كاملاً مرة واحدة حتى تعمل الرسائل وصفحة إضافة الأعمال.
 
 إذا واجهت خطأ (مثل "relation contact_messages does not exist" أو "new row violates row-level security") تأكد أنك شغّلت **supabase_setup.sql** كاملاً في SQL Editor.
