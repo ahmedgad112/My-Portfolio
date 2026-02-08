@@ -21,20 +21,18 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-black tracking-tighter text-cyan-600 dark:text-cyan-400">Gad Development</div>
 
-            <div class="flex items-center gap-6">
-                <ul class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest opacity-70">
+            <!-- قائمة الديسكتوب -->
+            <div class="hidden md:flex items-center gap-6">
+                <ul class="flex gap-8 text-sm font-bold uppercase tracking-widest opacity-70">
                     <li><a href="#home" class="hover:text-cyan-500 transition">الرئيسية</a></li>
                     <li><a href="#work" class="hover:text-cyan-500 transition">اعمالي</a></li>
                     <li><a href="#contact" class="hover:text-cyan-500 transition">تواصل</a></li>
-                    <li id="nav-visitor-login"><a href="login.html" class="hover:text-cyan-500 transition">تعريف الزائر</a></li>
-                    <li id="nav-visitor-logout" style="display: none;"><button type="button" id="visitor-logout-btn" class="bg-transparent border-none cursor-pointer text-inherit font-inherit p-0 hover:text-cyan-500 transition">تسجيل الخروج</button></li>
+                    <li class="nav-visitor-login"><a href="login.html" class="hover:text-cyan-500 transition">تعريف الزائر</a></li>
+                    <li class="nav-visitor-logout" style="display: none;"><button type="button" class="visitor-logout-btn bg-transparent border-none cursor-pointer text-inherit font-inherit p-0 hover:text-cyan-500 transition">تسجيل الخروج</button></li>
                 </ul>
-
-                <!-- language toggle -->
-                <button class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10 hover:ring-2 ring-cyan-400 transition-allx">
+                <button class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10 hover:ring-2 ring-cyan-400 transition-all">
                     <a href="index.html" class="text-sm font-bold uppercase tracking-widest opacity-70">English</a>
                 </button>
-                <!-- theme toggle -->
                 <button id="theme-toggle"
                     class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10 hover:ring-2 ring-cyan-400 transition-all">
                     <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-yellow-500" fill="currentColor"
@@ -49,6 +47,29 @@
                     </svg>
                 </button>
             </div>
+
+            <!-- زر القائمة للموبايل -->
+            <div class="flex md:hidden items-center gap-2">
+                <button id="theme-toggle-mobile" class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10" aria-label="الثيم">
+                    <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+                    <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                </button>
+                <button type="button" id="nav-mobile-toggle" class="p-2.5 rounded-xl bg-gray-200 dark:bg-white/10 hover:ring-2 ring-cyan-400 transition-all" aria-label="فتح القائمة">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- القائمة المنزلقة للموبايل -->
+        <div id="nav-mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white dark:bg-darkBg border-b border-gray-200 dark:border-white/10 shadow-xl">
+            <ul class="container mx-auto px-6 py-4 flex flex-col gap-4 text-sm font-bold uppercase tracking-widest opacity-70">
+                <li><a href="#home" class="nav-mobile-link block py-2 hover:text-cyan-500 transition">الرئيسية</a></li>
+                <li><a href="#work" class="nav-mobile-link block py-2 hover:text-cyan-500 transition">اعمالي</a></li>
+                <li><a href="#contact" class="nav-mobile-link block py-2 hover:text-cyan-500 transition">تواصل</a></li>
+                <li class="nav-visitor-login"><a href="login.html" class="nav-mobile-link block py-2 hover:text-cyan-500 transition">تعريف الزائر</a></li>
+                <li class="nav-visitor-logout" style="display: none;"><button type="button" class="visitor-logout-btn block py-2 text-right w-full hover:text-cyan-500 transition">تسجيل الخروج</button></li>
+                <li><a href="index.html" class="nav-mobile-link block py-2 hover:text-cyan-500 transition">English</a></li>
+            </ul>
         </div>
     </nav>
 

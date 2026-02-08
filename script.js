@@ -77,23 +77,63 @@ if (contactForm) {
     } catch (e) {}
 }
 
-// إظهار/إخفاء "تعريف الزائر" و "تسجيل الخروج" حسب بيانات الزائر
+// إظهار/إخفاء "تعريف الزائر" و "تسجيل الخروج" (ديسكتوب + موبايل)
 (function () {
-    var navLogin = document.getElementById('nav-visitor-login');
-    var navLogout = document.getElementById('nav-visitor-logout');
     var hasVisitor = !!(localStorage.getItem('visitorId') || localStorage.getItem('visitorName'));
-    if (navLogin) navLogin.style.display = hasVisitor ? 'none' : '';
-    if (navLogout) navLogout.style.display = hasVisitor ? '' : 'none';
+    document.querySelectorAll('.nav-visitor-login').forEach(function (el) { el.style.display = hasVisitor ? 'none' : ''; });
+    document.querySelectorAll('.nav-visitor-logout').forEach(function (el) { el.style.display = hasVisitor ? '' : 'none'; });
 
-    var logoutBtn = document.getElementById('visitor-logout-btn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', function () {
+    document.querySelectorAll('.visitor-logout-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
             localStorage.removeItem('visitorId');
             localStorage.removeItem('visitorName');
             localStorage.removeItem('visitorEmail');
             localStorage.removeItem('visitorPhone');
             window.location.reload();
         });
+    });
+})();
+
+// قائمة الموبايل: فتح/إغلاق
+(function () {
+    var toggle = document.getElementById('nav-mobile-toggle');
+    var menu = document.getElementById('nav-mobile-menu');
+    if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+            menu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.nav-mobile-link').forEach(function (link) {
+            link.addEventListener('click', function () { menu.classList.add('hidden'); });
+        });
+        document.querySelectorAll('.visitor-logout-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () { menu.classList.add('hidden'); });
+        });
+    }
+})();
+
+// مزامنة زر الثيم في الموبايل مع الثيم الرئيسي
+(function () {
+    var btnMobile = document.getElementById('theme-toggle-mobile');
+    var lightMobile = document.getElementById('theme-toggle-light-icon-mobile');
+    var darkMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+    var btn = document.getElementById('theme-toggle');
+    var lightIcon = document.getElementById('theme-toggle-light-icon');
+    var darkIcon = document.getElementById('theme-toggle-dark-icon');
+    function syncMobileIcons() {
+        var isDark = document.documentElement.classList.contains('dark');
+        if (lightMobile) lightMobile.classList.toggle('hidden', !isDark);
+        if (darkMobile) darkMobile.classList.toggle('hidden', isDark);
+    }
+    if (btnMobile) {
+        syncMobileIcons();
+        btnMobile.addEventListener('click', function () {
+            if (btn) btn.click();
+            syncMobileIcons();
+        });
+    }
+    if (btn && lightIcon && darkIcon) {
+        var obs = new MutationObserver(syncMobileIcons);
+        obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
     }
 })();
 
