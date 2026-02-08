@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+:root {
+    --cyan-glow: rgba(34, 211, 238, 0.15);
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+}
+
+/* أشكال الخلفية الذكية */
+.blob {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(180deg, var(--cyan-glow) 0%, rgba(59, 130, 246, 0.15) 100%);
+    filter: blur(90px);
+    border-radius: 50%;
+    z-index: -1;
+    transition: transform 0.2s ease-out;
+}
+
+/* إعدادات Tailwind المخصصة */
+@layer base {
+    .darkBg { background-color: #0f172a; }
+    .lightBg { background-color: #f8fafc; }
+}
+
+
+/* تحسين شكل الـ Inputs */
+input::placeholder, textarea::placeholder {
+    font-size: 0.9rem;
+    opacity: 0.5;
+}
+
+.project-card:hover img {
+    filter: grayscale(0);
+}
+
+.dark .project-card img {
+    filter: grayscale(0.2);
+}
+
+/* إضافة لمسة احترافية للـ Form في الـ Dark Mode */
+.dark input, .dark textarea {
+    color: white;
+}
